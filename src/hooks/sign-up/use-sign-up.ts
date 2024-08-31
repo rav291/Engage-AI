@@ -29,6 +29,7 @@ export const useSignUpForm = () => {
     password: string,
     onNext: React.Dispatch<React.SetStateAction<number>>
   ) => {
+    console.log("Here1")
     if (!isLoaded) return;
 
     try {
@@ -43,7 +44,7 @@ export const useSignUpForm = () => {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.errors[0].longMessage,
+        description: error.errors[0].longMessage
       });
     }
   };

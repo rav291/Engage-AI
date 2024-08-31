@@ -13,7 +13,7 @@ const ButtonHandler = (props: Props) => {
   const { formState, getFieldState, getValues } = useFormContext();
   const { onGenerateOTP } = useSignUpForm()
 
-  const { isDirty: isName } = getFieldState("fullName", formState);
+  const { isDirty: isName } = getFieldState("fullname", formState);
   const { isDirty: isEmail } = getFieldState("email", formState);
   const { isDirty: isPassword } = getFieldState("password", formState);
 
@@ -22,7 +22,7 @@ const ButtonHandler = (props: Props) => {
       <div className='w-full flex flex-col gap-3 items-center'>
         <Button type='submit' className='w-full'>Create Account</Button>
         <p>
-          Already have an account?
+          Already have an account?&nbsp;
           <Link href="/auth/sign-in" className='font-bold'>
             Sign In
           </Link>
@@ -36,15 +36,18 @@ const ButtonHandler = (props: Props) => {
       <div className='w-full flex flex-col gap-3 items-center'>
         <Button type='submit' className='w-full'
           {...(isName && isEmail && isPassword && {
-            onClick: () => onGenerateOTP(getValues("email"), getValues("password"), setCurrentStep)
+            onClick: () => {
+              onGenerateOTP(getValues("email"), getValues("password"), setCurrentStep)
+              console.log("Here2")
+            }
           })} // Note this way of conditionally adding event handlers
         >
-          Continue
+          Continue 2
         </Button>
         <p>
-          Already have an account?
+          Already have an account?&nbsp;
           <Link href="/auth/sign-in" className='font-bold'>
-            Sign In
+             Sign In
           </Link>
         </p>
       </div>
@@ -54,10 +57,10 @@ const ButtonHandler = (props: Props) => {
   return (
     <div className='w-full flex flex-col gap-3 items-center'>
       <Button type='submit' className='w-full' onClick={() => setCurrentStep((prev: number) => prev + 1)}>
-        Continue
+        Continue 1
       </Button>
       <p>
-        Already have an account?
+        Already have an account?&nbsp;
         <Link href="/auth/sign-in" className='font-bold'>
           Sign In
         </Link>

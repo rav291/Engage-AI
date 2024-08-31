@@ -32,10 +32,25 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z
     otp: z.string().min(6, { message: "You must enter a 6 digit code" }),
   })
   .refine((schema) => schema.password === schema.confirmPassword, {
-    message: "passwords do not match",
+    message: "Passwords do not match",
     path: ["confirmPassword"],
   })
   .refine((schema) => schema.email === schema.confirmEmail, {
     message: "Your emails not match",
     path: ["confirmEmail"],
   });
+
+export type UserLoginProps = {
+  email: string;
+  password: string;
+};
+
+export const UserLoginSchema: ZodType<UserLoginProps> = z.object({
+  email: z.string().email({
+    message: "You did not enter a valid email",
+  }),
+  password: z
+    .string()
+    .min(8, { message: "You password must be atleast 8 characters long" })
+    .max(64, { message: "Your password cannot be longer than 64 characters" }),
+});

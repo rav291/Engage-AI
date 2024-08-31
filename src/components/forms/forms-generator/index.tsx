@@ -84,6 +84,7 @@ const FormGenerator = ({ type, inputType, options, defaultValue, label, placehol
                     />
                 </Label>
             )
+        // default: return <></>
     }
 }
 
