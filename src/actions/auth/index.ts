@@ -53,7 +53,7 @@ export const onLoginUser = async () => {
         return {
           status: 200,
           user: authenticated,
-          domains: domains?.domains,
+          domain: domains?.domains,
         };
       }
     } catch (error) {

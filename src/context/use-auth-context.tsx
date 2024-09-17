@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 type InitialValuesProps = {
   currentStep: number;
@@ -11,7 +11,7 @@ const InitialValues: InitialValuesProps = {
   setCurrentStep: () => undefined,
 };
 
-const authContext = React.createContext(InitialValues);
+const authContext = createContext(InitialValues);
 
 const { Provider } = authContext;
 
@@ -30,5 +30,5 @@ export const AuthContextProvider = ({
 };
 
 export const useAuthContextHook = () => {
-  return React.useContext(authContext);
+  return useContext(authContext);
 };
